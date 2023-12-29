@@ -13,31 +13,33 @@ import "./mq-settings.scss";
 import Layout from "@/components/Layout";
 
 const notoSansJP = NotoSansJP({ subsets: ["latin"], weight: "900" });
+const siteName = "Lv40代 | イラストレーター 7:08 オフィシャルサイト";
+const description = "イラストレーター7:08のオフィシャルサイトです。";
+const url = "https://www.nbhyakuhati.com";
 
 export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  description: "イラストレーター7:08のオフィシャルサイトです。",
-  metadataBase: new URL("https://www.nbhyakuhati.com"),
+  description,
+  metadataBase: new URL(url),
   openGraph: {
-    images: [
-      {
-        alt: "7:08",
-        height: 630,
-        type: "image/png",
-        url: "/og-image-01.png",
-        width: 1200,
-      },
-    ],
+    description,
+    locale: "ja_JP",
+    siteName,
+    title: siteName,
+    type: "website",
+    url,
   },
   title: {
-    default: "Lv40代 | イラストレーター 7:08 オフィシャルサイト",
-    template: "%s | Lv40代 | イラストレーター 7:08 オフィシャルサイト",
+    default: siteName,
+    template: `%s | ${siteName}`,
   },
   twitter: {
     card: "summary_large_image",
     creator: "@708_nhh",
+    description,
+    title: siteName,
   },
 };
 

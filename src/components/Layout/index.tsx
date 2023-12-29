@@ -99,6 +99,21 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
     setTrue: onIsOpen,
     value: isOpen,
   } = useBoolean(false);
+  const items = useMemo(
+    () =>
+      Array(column * row)
+        .fill(undefined)
+        .map((_, index) => (
+          <div className={styles.tilesWrapper} key={index}>
+            <TilesBlock
+              callback={offInitial}
+              initial={initial}
+              shuffled={shuffled}
+            />
+          </div>
+        )),
+    [column, initial, offInitial, row, shuffled],
+  );
 
   useEffect(() => {
     if (height === 0 || width === 0) {
@@ -141,25 +156,13 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
       <div className={`${styles.wrapper} pattern-cross-dots-md`}>
         <div
           className={styles.tilesListWrapper}
+          key={`${height}${width}`}
           style={{
             gridTemplateColumns: `repeat(${column}, 1fr)`,
             width: `calc(100% / (${column} - 1) * ${column})`,
           }}
         >
-          {Array(column * row)
-            .fill(undefined)
-            .map((_, index) => (
-              <div
-                className={styles.tilesWrapper}
-                key={`${height}${width}${index}`}
-              >
-                <TilesBlock
-                  callback={offInitial}
-                  initial={initial}
-                  shuffled={shuffled}
-                />
-              </div>
-            ))}
+          {items}
         </div>
         <div className={styles.frameBackWrapper}>
           <div className={styles.frameBlock} style={{ height }} />
