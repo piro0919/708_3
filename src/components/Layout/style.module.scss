@@ -1,5 +1,5 @@
 /* stylelint-disable-next-line plugin/sass-render-errors */
-@import "custom-border-mixin";
+@import "@/styles/mixin";
 
 .h1 {
   height: 1px;
@@ -134,34 +134,10 @@
   }
 }
 
-@keyframes border-animation {
-  from {
-    @include custom-border(
-      dashed($color: #000, $gap: 4px, $length: 10px, $side: all, $size: 2px)
-    );
-  }
-  to {
-    @include custom-border(
-      dashed(
-        $color: #000,
-        $gap: 4px,
-        $length: 10px,
-        $side: all,
-        $size: 2px,
-        $translate: true
-      )
-    );
-  }
-}
-
 .frameBlock::after {
-  animation-direction: reverse;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-  animation-name: border-animation;
-  animation-timing-function: linear;
   content: "";
   position: absolute;
+  @include border-animation;
   @include mq.mq($until: desktop) {
     border-radius: 6px;
     height: calc(100% - 12px * 2);
