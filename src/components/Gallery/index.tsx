@@ -3,8 +3,9 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import Lightbox from "react-18-image-lightbox";
-import { useCounter, useWindowSize } from "usehooks-ts";
+import { useCounter } from "usehooks-ts";
 import styles from "./style.module.scss";
+import useWindowWidth from "@/hooks/useWindowWidth";
 
 type Image = {
   url: string;
@@ -17,7 +18,8 @@ export type GalleryProps = {
 export default function Gallery({ images }: GalleryProps): JSX.Element {
   const { count, increment } = useCounter(0);
   const [photoIndex, setPhotoIndex] = useState<number>();
-  const { width } = useWindowSize();
+  const { width } = useWindowWidth();
+  const columns = useMemo(() => Math.ceil(width / 360), [width]);
   const items = useMemo(
     () =>
       images.map(({ url }, index) => (
@@ -54,7 +56,7 @@ export default function Gallery({ images }: GalleryProps): JSX.Element {
       <ul
         className={styles.list}
         style={{
-          gridTemplateColumns: `repeat(${Math.ceil(width / 360)}, 1fr)`,
+          gridTemplateColumns: `repeat(${columns}, 1fr)`,
         }}
       >
         {items}

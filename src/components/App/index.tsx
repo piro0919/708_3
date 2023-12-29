@@ -35,10 +35,10 @@ export default function App(): JSX.Element {
       >
         <div className={styles.topBlock}>
           <div className={styles.upperBlock}>
-            <div className={styles.h1Block}>
+            <div className={styles.titleBlock}>
               <motion.div
                 animate={{ transform: "translate(0, 0)" }}
-                className={styles.h1Inner}
+                className={styles.titleInner}
                 initial={{ transform: "translate(0, -100%)" }}
                 transition={{
                   delay: 1.2 - (renderd ? 1 : 0),
@@ -46,7 +46,9 @@ export default function App(): JSX.Element {
                   ease: "backOut",
                 }}
               >
-                <h1 className={`${styles.h1} ${mPlus1.className}`}>Lv40代</h1>
+                <div className={`${styles.title} ${mPlus1.className}`}>
+                  Lv40代
+                </div>
               </motion.div>
             </div>
             <Spacer grow={2} />
@@ -79,7 +81,7 @@ export default function App(): JSX.Element {
               ease: "circInOut",
             }}
           />
-          <div className={styles.h2Block}>
+          <div className={styles.subTitleBlock}>
             <motion.div
               animate={{ transform: "translate(0, 0)" }}
               initial={{ transform: "translate(0, -100%)" }}
@@ -89,9 +91,9 @@ export default function App(): JSX.Element {
                 ease: "backOut",
               }}
             >
-              <h2 className={styles.h2}>
+              <div className={styles.subTitle}>
                 イラストレーター 7:08 オフィシャルサイト
-              </h2>
+              </div>
             </motion.div>
           </div>
         </div>

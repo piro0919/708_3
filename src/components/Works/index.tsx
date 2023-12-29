@@ -4,8 +4,8 @@ import Image from "next/image";
 import { useMemo, useState } from "react";
 import Lightbox from "react-18-image-lightbox";
 import ImageGallery from "react-image-gallery";
-import { useWindowSize } from "usehooks-ts";
 import styles from "./style.module.scss";
+import useWindowWidth from "@/hooks/useWindowWidth";
 
 type Image = {
   url: string;
@@ -22,10 +22,10 @@ export type WorksProps = {
 };
 
 export default function Works({ works }: WorksProps): JSX.Element {
-  const { width: windowWidth } = useWindowSize();
+  const { width } = useWindowWidth();
   const [workIndex, setWorkIndex] = useState<number>();
   const [photoIndex, setPhotoIndex] = useState<number>();
-  const columns = useMemo(() => Math.ceil(windowWidth / 720), [windowWidth]);
+  const columns = useMemo(() => Math.ceil(width / 720), [width]);
   const items = useMemo(
     () =>
       works.map(({ description, images, title }, index) => (

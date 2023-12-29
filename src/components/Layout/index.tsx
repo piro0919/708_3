@@ -16,6 +16,7 @@ import { useBoolean, useCounter, useWindowSize } from "usehooks-ts";
 import styles from "./style.module.scss";
 import Drawer from "@/components/Drawer";
 import renderdContext from "@/contexts/renderdContext";
+import useWindowWidth from "@/hooks/useWindowWidth";
 import breakpoints from "@/lib/breakpoints";
 
 const righteous = Righteous({ subsets: ["latin"], weight: "400" });
@@ -78,7 +79,8 @@ export type LayoutProps = {
 
 export default function Layout({ children }: LayoutProps): JSX.Element {
   const { breakpoint } = useBreakpoint(breakpoints);
-  const { height, width } = useWindowSize();
+  const { width } = useWindowWidth();
+  const { height } = useWindowSize();
   const [{ column, row }, setTiles] = useState({ column: 0, row: 0 });
   const shuffled = useMemo<TilesBlockProps["shuffled"]>(
     () =>
@@ -90,7 +92,6 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
     [],
   );
   const { setFalse: offInitial, value: initial } = useBoolean(true);
-  const { setTrue: onRenderd, value: renderd } = useBoolean(false);
   const pathname = usePathname();
   const router = useRouter();
   const {
@@ -100,7 +101,7 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
   } = useBoolean(false);
 
   useEffect(() => {
-    if (!height || !width) {
+    if (height === 0 || width === 0) {
       return;
     }
 
@@ -130,11 +131,10 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
     }
 
     setTiles({ column, row: Math.ceil((height / width) * (column - 1)) + 1 });
-    onRenderd();
-  }, [breakpoint, height, onRenderd, width]);
+  }, [breakpoint, height, width]);
 
   return (
-    <renderdContext.Provider value={{ renderd }}>
+    <renderdContext.Provider value={{ renderd: column > 0 && row > 0 }}>
       <h1 className={styles.h1}>
         Lv40代 | イラストレーター 7:08 オフィシャルサイト
       </h1>

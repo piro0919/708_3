@@ -21,18 +21,18 @@
   display: flex;
 }
 
-.h1Block {
+.titleBlock {
   align-items: center;
   display: flex;
   height: 90px;
   overflow: hidden;
 }
 
-.h1Inner {
+.titleInner {
   margin-top: -15px;
 }
 
-.h1 {
+.title {
   color: #fff;
   font-weight: 900;
   @include mq.mq($until: tablet) {
@@ -63,11 +63,11 @@
   height: 1px;
 }
 
-.h2Block {
+.subTitleBlock {
   overflow: hidden;
 }
 
-.h2 {
+.subTitle {
   color: #49abb8;
   font-size: 2.4rem;
   text-shadow:
