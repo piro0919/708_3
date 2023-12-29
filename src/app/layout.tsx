@@ -26,7 +26,7 @@ export const metadata: Metadata = {
         alt: "7:08",
         height: 630,
         type: "image/png",
-        url: "/og-image-01.jpg",
+        url: "/og-image-01.png",
         width: 1200,
       },
     ],
