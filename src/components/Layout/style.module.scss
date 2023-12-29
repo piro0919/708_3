@@ -1,0 +1,255 @@
+/* stylelint-disable-next-line plugin/sass-render-errors */
+@import "custom-border-mixin";
+
+.h1 {
+  height: 1px;
+  opacity: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.wrapper {
+  background-repeat: repeat;
+  color: #eee;
+}
+
+.tilesListWrapper {
+  align-items: flex-start;
+  display: grid;
+  inset: 0;
+  position: fixed;
+}
+
+@keyframes tiles-animation {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    // transform: translate(-100%, -100%);
+  }
+}
+
+.tilesWrapper {
+  animation-direction: default;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+  animation-name: tiles-animation;
+  animation-timing-function: linear;
+  display: grid;
+  grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+}
+
+.tileBlock {
+  aspect-ratio: 1 / 1;
+  background: #fff;
+  border-radius: 12px;
+  margin: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.tileBlock img {
+  opacity: 0.25;
+}
+
+.frameBackWrapper,
+.frameUpperWrapper,
+.frameLowerWrapper {
+  overflow: hidden;
+  position: fixed;
+}
+
+.frameBackWrapper {
+  @include mq.mq($until: desktop) {
+    height: calc(100% - (12px + 2px) * 2);
+    inset: calc(12px + 2px) 0;
+  }
+  @include mq.mq($from: desktop) {
+    height: calc(100% - (24px + 2px) * 2);
+    inset: calc(24px + 2px) 0;
+  }
+}
+
+.frameUpperWrapper,
+.frameLowerWrapper {
+  @include mq.mq($until: desktop) {
+    height: calc(12px + 2px);
+  }
+  @include mq.mq($from: desktop) {
+    height: calc(24px + 2px);
+  }
+}
+
+.frameUpperWrapper {
+  inset: 0 0 auto;
+}
+
+.frameLowerWrapper {
+  inset: auto 0 0;
+}
+
+.frameBlock {
+  inset: 0;
+  position: absolute;
+  .frameBackWrapper & {
+    @include mq.mq($until: desktop) {
+      inset: calc((12px + 2px) * -1) 0 0;
+    }
+    @include mq.mq($from: desktop) {
+      inset: calc((24px + 2px) * -1) 0 0;
+    }
+  }
+  .frameLowerWrapper & {
+    inset: auto 0 0;
+  }
+}
+
+@mixin clip-frame($padding-width) {
+  clip-path: polygon(
+    0% 0%,
+    0% 100%,
+    $padding-width 100%,
+    $padding-width $padding-width,
+    calc(100% - $padding-width) $padding-width,
+    calc(100% - $padding-width) calc(100% - $padding-width),
+    $padding-width calc(100% - $padding-width),
+    $padding-width 100%,
+    100% 100%,
+    100% 0%
+  );
+}
+
+.frameBlock::before {
+  backdrop-filter: blur(1px);
+  background: rgba($color: #fff, $alpha: 0.75);
+  content: "";
+  inset: 0;
+  position: absolute;
+  @include mq.mq($until: desktop) {
+    @include clip-frame(12px);
+  }
+  @include mq.mq($from: desktop) {
+    @include clip-frame(24px);
+  }
+}
+
+@keyframes border-animation {
+  from {
+    @include custom-border(
+      dashed($color: #000, $gap: 4px, $length: 10px, $side: all, $size: 2px)
+    );
+  }
+  to {
+    @include custom-border(
+      dashed(
+        $color: #000,
+        $gap: 4px,
+        $length: 10px,
+        $side: all,
+        $size: 2px,
+        $translate: true
+      )
+    );
+  }
+}
+
+.frameBlock::after {
+  animation-direction: reverse;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-name: border-animation;
+  animation-timing-function: linear;
+  content: "";
+  position: absolute;
+  @include mq.mq($until: desktop) {
+    border-radius: 6px;
+    height: calc(100% - 12px * 2);
+    inset: 12px;
+    width: calc(100% - 12px * 2);
+  }
+  @include mq.mq($from: desktop) {
+    border-radius: 12px;
+    height: calc(100% - 24px * 2);
+    inset: 24px;
+    width: calc(100% - 24px * 2);
+  }
+}
+
+.contentBlock {
+  color: #000;
+  display: grid;
+  grid-template: auto 1fr auto / 100%;
+  min-height: 100dvh;
+  position: relative;
+  @include mq.mq($until: desktop) {
+    padding: calc(12px + 1px * 2) calc(12px + 1px * 2 + 4px * 2);
+  }
+  @include mq.mq($from: desktop) {
+    padding: calc(24px + 1px * 2) calc(24px + 1px * 2 + 4px * 2);
+  }
+}
+
+.header {
+  @include mq.mq($until: desktop) {
+    padding: 12px 0;
+  }
+  @include mq.mq($from: desktop) {
+    padding: 24px 0;
+  }
+}
+
+.nav {
+  align-items: center;
+  gap: 24px;
+  justify-content: center;
+  @include mq.mq($until: tablet) {
+    display: none;
+  }
+  @include mq.mq($from: tablet) {
+    display: flex;
+  }
+}
+
+.current {
+  color: #49abb8;
+}
+
+.mobileHeaderInner {
+  justify-content: flex-end;
+  @include mq.mq($until: tablet) {
+    display: flex;
+  }
+  @include mq.mq($from: tablet) {
+    display: none;
+  }
+}
+
+.separator {
+  background: #000;
+  height: 16px;
+  width: 2px;
+}
+
+.menuItem {
+  justify-content: center;
+}
+
+.footer {
+  font-size: 1.4rem;
+  text-align: center;
+  @include mq.mq($until: desktop) {
+    padding: 12px 0;
+  }
+  @include mq.mq($from: desktop) {
+    padding: 24px 0;
+  }
+}
+
+.drawerBlock {
+  @include mq.mq($until: tablet) {
+    display: block;
+  }
+  @include mq.mq($from: tablet) {
+    display: none;
+  }
+}

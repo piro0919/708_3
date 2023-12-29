@@ -1,0 +1,52 @@
+html {
+  @include mq.mq($until: tablet) {
+    font-size: 56.25%;
+  }
+  @include mq.mq($from: tablet) {
+    font-size: 62.5%;
+  }
+}
+
+body {
+  background: #fff;
+  color: #000;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+* {
+  outline: none;
+}
+
+a {
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+canvas,
+img,
+svg {
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-style: italic;
+  height: auto;
+  max-width: 100%;
+  pointer-events: none;
+  shape-margin: 1rem;
+  vertical-align: middle;
+}
+
+ul {
+  list-style: none;
+}
+
+.ril__toolbar {
+  display: none;
+}
+
+.image-gallery-left-nav,
+.image-gallery-right-nav {
+  padding: 0;
+}
