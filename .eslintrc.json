@@ -9,16 +9,20 @@
     "next/core-web-vitals",
     "prettier"
   ],
-  "ignorePatterns": ["*.d.ts", "*.js"],
+  "ignorePatterns": [
+    "*.d.ts",
+    "*.js"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": ["./tsconfig.json"],
+    "project": [
+      "./tsconfig.json"
+    ],
     "warnOnUnsupportedTypeScriptVersion": false
   },
   "plugins": [
     "ext",
     "filenames",
-    "postcss-modules",
     "sort-destructure-keys",
     "sort-keys-fix",
     "typescript-sort-keys",
@@ -27,8 +31,18 @@
   "rules": {
     "@typescript-eslint/explicit-function-return-type": "error",
     "@typescript-eslint/no-unused-vars": "off",
-    "ext/lines-between-object-properties": ["error", "never"],
-    "filenames/match-exported": ["error", ["camel", "kebab", "pascal"]],
+    "ext/lines-between-object-properties": [
+      "error",
+      "never"
+    ],
+    "filenames/match-exported": [
+      "error",
+      [
+        "camel",
+        "kebab",
+        "pascal"
+      ]
+    ],
     "filenames/match-regex": "error",
     "filenames/no-index": "off",
     "import/newline-after-import": [
@@ -103,7 +117,10 @@
       },
       {
         "blankLine": "never",
-        "next": ["case", "default"],
+        "next": [
+          "case",
+          "default"
+        ],
         "prev": "case"
       },
       {
@@ -117,16 +134,20 @@
         "prev": "let"
       }
     ],
-    "postcss-modules/no-undef-class": "error",
-    "postcss-modules/no-unused-class": "error",
-    "quotes": ["error", "double"],
+    "quotes": [
+      "error",
+      "double"
+    ],
     "react-hooks/exhaustive-deps": [
       "error",
       {
         "enableDangerousAutofixThisMayCauseInfiniteLoops": true
       }
     ],
-    "react/jsx-boolean-value": ["error", "always"],
+    "react/jsx-boolean-value": [
+      "error",
+      "always"
+    ],
     "react/jsx-newline": [
       "error",
       {
@@ -135,7 +156,10 @@
     ],
     "react/jsx-sort-props": "error",
     "require-jsdoc": "off",
-    "semi": ["error", "always"],
+    "semi": [
+      "error",
+      "always"
+    ],
     "sort-destructure-keys/sort-destructure-keys": "error",
     "sort-imports": [
       "error",
@@ -155,10 +179,5 @@
         "varsIgnorePattern": "^_"
       }
     ]
-  },
-  "settings": {
-    "postcss-modules": {
-      "include": "**/*.scss"
-    }
   }
 }

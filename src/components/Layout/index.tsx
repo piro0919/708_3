@@ -1,4 +1,5 @@
 "use client";
+import { Menu, MenuButton, MenuItem } from "@szhsin/react-menu";
 import "@szhsin/react-menu/dist/index.css";
 import "@szhsin/react-menu/dist/transitions/slide.css";
 import arrayShuffle from "array-shuffle";
@@ -16,7 +17,6 @@ import styles from "./style.module.scss";
 import Drawer from "@/components/Drawer";
 import renderdContext from "@/contexts/renderdContext";
 import breakpoints from "@/lib/breakpoints";
-import { Menu, MenuButton, MenuItem } from "@szhsin/react-menu";
 
 const righteous = Righteous({ subsets: ["latin"], weight: "400" });
 

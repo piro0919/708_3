@@ -8,7 +8,6 @@ import "react-image-gallery/styles/scss/image-gallery.scss";
 import "react-modern-drawer/dist/index.css";
 import "react-toastify/dist/ReactToastify.css";
 import "ress";
-// eslint-disable-next-line postcss-modules/no-unused-class
 import "./globals.scss";
 import "./mq-settings.scss";
 import Layout from "@/components/Layout";
