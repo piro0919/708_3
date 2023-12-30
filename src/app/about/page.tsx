@@ -7,6 +7,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/about",
   },
+  openGraph: {
+    title: "ABOUT | イラストレーター 7:08 オフィシャルサイト",
+    type: "article",
+  },
   title: "ABOUT",
 };
 

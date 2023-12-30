@@ -1,4 +1,4 @@
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import queryString from "query-string";
 import Fubumikuji from "@/components/Fubumikuji";
@@ -8,32 +8,34 @@ export type PageProps = {
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export async function generateMetadata(
-  { params: { year }, searchParams: { result } }: PageProps,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
+export function generateMetadata({
+  params: { year },
+  searchParams: { result },
+}: PageProps): Metadata {
   if (typeof result !== "string") {
     return {
       alternates: {
         canonical: `/fubumikuji/${year}`,
       },
+      openGraph: {
+        title: `フブみくじ${year} | イラストレーター 7:08 オフィシャルサイト`,
+        type: "article",
+      },
       title: `フブみくじ${year}`,
     };
   }
-
-  const { openGraph = {}, twitter = {} } = await parent;
 
   return {
     alternates: {
       canonical: queryString.stringify({ result, url: `/fubumikuji/${year}` }),
     },
     openGraph: {
-      ...openGraph,
       images: [`/fubumikuji${year}${result}.png`],
+      title: `フブみくじ${year} | イラストレーター 7:08 オフィシャルサイト`,
+      type: "article",
     },
     title: `フブみくじ${year}`,
     twitter: {
-      ...twitter,
       card: "summary",
     },
   };
