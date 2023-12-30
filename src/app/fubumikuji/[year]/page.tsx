@@ -29,7 +29,7 @@ export async function generateMetadata(
     },
     openGraph: {
       ...openGraph,
-      images: [`/fubumikuji${year}${result}`],
+      images: [`/fubumikuji${year}${result}.png`],
     },
     title: `フブみくじ${year}`,
     twitter: {
