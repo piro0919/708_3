@@ -3,15 +3,20 @@ import { Metadata } from "next";
 import Works, { WorksProps } from "@/components/Works";
 import client from "@/lib/client";
 
+const title = "WORKS";
+const url = "/works";
+
 export const metadata: Metadata = {
   alternates: {
-    canonical: "/works",
+    canonical: url,
   },
   openGraph: {
-    title: "WORKS | イラストレーター 7:08 オフィシャルサイト",
+    title,
     type: "article",
+    url,
   },
-  title: "WORKS",
+  title,
+  twitter: { title },
 };
 
 type GetWorkListData = MicroCMSListResponse<MicroCMS.Works>;

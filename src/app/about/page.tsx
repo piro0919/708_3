@@ -3,15 +3,20 @@ import { Metadata } from "next";
 import About from "@/components/About";
 import client from "@/lib/client";
 
+const title = "ABOUT";
+const url = "/about";
+
 export const metadata: Metadata = {
   alternates: {
-    canonical: "/about",
+    canonical: url,
   },
   openGraph: {
-    title: "ABOUT | イラストレーター 7:08 オフィシャルサイト",
+    title,
     type: "article",
+    url,
   },
-  title: "ABOUT",
+  title,
+  twitter: { title },
 };
 
 type GetAboutData = MicroCMS.About & MicroCMSDate;

@@ -3,15 +3,20 @@ import { Metadata } from "next";
 import Gallery, { GalleryProps } from "@/components/Gallery";
 import client from "@/lib/client";
 
+const title = "GALLERY";
+const url = "/gallery";
+
 export const metadata: Metadata = {
   alternates: {
-    canonical: "/gallery",
+    canonical: url,
   },
   openGraph: {
-    title: "GALLERY | イラストレーター 7:08 オフィシャルサイト",
+    title,
     type: "article",
+    url,
   },
-  title: "GALLERY",
+  title,
+  twitter: { title },
 };
 
 type GetGalleryListData = MicroCMSListResponse<MicroCMS.Illustrations>;

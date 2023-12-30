@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import queryString from "query-string";
 import Fubumikuji from "@/components/Fubumikuji";
 
+const title = "フブみくじ";
+const url = "/fubumikuji";
+
 export type PageProps = {
   params: { year: string };
   searchParams: { [key: string]: string | string[] | undefined };
@@ -12,33 +15,45 @@ export function generateMetadata({
   params: { year },
   searchParams: { result },
 }: PageProps): Metadata {
-  if (typeof result !== "string") {
-    return {
-      alternates: {
-        canonical: `/fubumikuji/${year}`,
-      },
-      openGraph: {
-        title: `フブみくじ${year} | イラストレーター 7:08 オフィシャルサイト`,
-        type: "article",
-      },
-      title: `フブみくじ${year}`,
-    };
-  }
-
-  return {
-    alternates: {
-      canonical: queryString.stringify({ result, url: `/fubumikuji/${year}` }),
-    },
-    openGraph: {
-      images: [`/fubumikuji${year}${result}.png`],
-      title: `フブみくじ${year} | イラストレーター 7:08 オフィシャルサイト`,
-      type: "article",
-    },
-    title: `フブみくじ${year}`,
-    twitter: {
-      card: "summary",
-    },
-  };
+  return typeof result === "string"
+    ? {
+        alternates: {
+          canonical: queryString.stringify({
+            result,
+            url: `${url}/${year}`,
+          }),
+        },
+        openGraph: {
+          images: [
+            `https://www.nbhyakuhati.com/fubumikuji${year}${result}.png`,
+          ],
+          title: `${title}${year}`,
+          type: "article",
+          url: queryString.stringify({
+            result,
+            url: `${url}/${year}`,
+          }),
+        },
+        title: `${title}${year}`,
+        twitter: {
+          card: "summary",
+          title: `${title}${year}`,
+        },
+      }
+    : {
+        alternates: {
+          canonical: `${url}/${year}`,
+        },
+        openGraph: {
+          title: `${title}${year}`,
+          type: "article",
+          url: `${url}/${year}`,
+        },
+        title: `${title}${year}`,
+        twitter: {
+          title: `${title}${year}`,
+        },
+      };
 }
 
 export default function Page({

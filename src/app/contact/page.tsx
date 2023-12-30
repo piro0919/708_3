@@ -1,15 +1,20 @@
 import { Metadata } from "next";
 import Client from "./client";
 
+const title = "CONTACT";
+const url = "/contact";
+
 export const metadata: Metadata = {
   alternates: {
-    canonical: "/about",
+    canonical: url,
   },
   openGraph: {
-    title: "CONTACT | イラストレーター 7:08 オフィシャルサイト",
+    title,
     type: "article",
+    url,
   },
-  title: "CONTACT",
+  title,
+  twitter: { title },
 };
 
 export default function Page(): JSX.Element {
