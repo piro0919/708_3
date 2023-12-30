@@ -27,10 +27,7 @@ export const metadata: Metadata = {
     description,
     locale: "ja_JP",
     siteName,
-    title: {
-      default: siteName,
-      template: `%s | ${siteName}`,
-    },
+    title: siteName,
     type: "website",
     url: "/",
   },
@@ -42,10 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     creator: "@708_nhh",
     description,
-    title: {
-      default: siteName,
-      template: `%s | ${siteName}`,
-    },
+    title: siteName,
   },
 };
 

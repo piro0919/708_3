@@ -2,6 +2,8 @@ import { MicroCMSListResponse } from "microcms-js-sdk";
 import { Metadata } from "next";
 import Gallery, { GalleryProps } from "@/components/Gallery";
 import client from "@/lib/client";
+import openGraph from "@/lib/openGraph";
+import twitter from "@/lib/twitter";
 
 const title = "GALLERY";
 const url = "/gallery";
@@ -11,12 +13,16 @@ export const metadata: Metadata = {
     canonical: url,
   },
   openGraph: {
+    ...openGraph,
     title,
     type: "article",
     url,
   },
   title,
-  twitter: { title },
+  twitter: {
+    ...twitter,
+    title,
+  },
 };
 
 type GetGalleryListData = MicroCMSListResponse<MicroCMS.Illustrations>;

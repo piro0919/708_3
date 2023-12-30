@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import queryString from "query-string";
 import Fubumikuji from "@/components/Fubumikuji";
+import openGraph from "@/lib/openGraph";
+import twitter from "@/lib/twitter";
 
 const title = "フブみくじ";
 const url = "/fubumikuji";
@@ -24,6 +26,7 @@ export function generateMetadata({
           }),
         },
         openGraph: {
+          ...openGraph,
           images: [
             `https://www.nbhyakuhati.com/fubumikuji${year}${result}.png`,
           ],
@@ -36,6 +39,7 @@ export function generateMetadata({
         },
         title: `${title}${year}`,
         twitter: {
+          ...twitter,
           card: "summary",
           title: `${title}${year}`,
         },
@@ -45,12 +49,14 @@ export function generateMetadata({
           canonical: `${url}/${year}`,
         },
         openGraph: {
+          ...openGraph,
           title: `${title}${year}`,
           type: "article",
           url: `${url}/${year}`,
         },
         title: `${title}${year}`,
         twitter: {
+          ...twitter,
           title: `${title}${year}`,
         },
       };
