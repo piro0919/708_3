@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useMemo, useState } from "react";
 import Lightbox from "react-18-image-lightbox";
 import ImageGallery from "react-image-gallery";
+import { useCounter } from "usehooks-ts";
 import styles from "./style.module.scss";
 import useWindowWidth from "@/hooks/useWindowWidth";
 
@@ -26,12 +27,19 @@ export default function Works({ works }: WorksProps): JSX.Element {
   const [workIndex, setWorkIndex] = useState<number>();
   const [photoIndex, setPhotoIndex] = useState<number>();
   const columns = useMemo(() => Math.ceil(width / 720), [width]);
+  const { count, increment } = useCounter(0);
+  const isLoaded = useMemo(
+    () => works.map(({ images }) => images).flat().length * 2 === count,
+    [count, works],
+  );
   const items = useMemo(
     () =>
       works.map(({ description, images, title }, index) => (
         <motion.li
           animate={{
-            clipPath: "inset(0% 0% 0% 0%)",
+            clipPath: `inset(0% ${isLoaded ? 0 : 100}% ${
+              isLoaded ? 0 : 100
+            }% 0%)`,
           }}
           className={`${styles.item} pattern-cross-dots-md`}
           initial={{ clipPath: "inset(0% 100% 100% 0%)" }}
@@ -55,17 +63,29 @@ export default function Works({ works }: WorksProps): JSX.Element {
                       setPhotoIndex(imageIndex);
                     }}
                   >
-                    <Image alt="" fill={true} quality={100} src={original} />
+                    <Image
+                      alt=""
+                      fill={true}
+                      onLoad={increment}
+                      quality={100}
+                      src={original}
+                    />
                   </div>
                 ),
                 renderThumbInner: ({ original }) => (
                   <div className={styles.imageBlock}>
-                    <Image alt="" fill={true} quality={100} src={original} />
+                    <Image
+                      alt=""
+                      fill={true}
+                      onLoad={increment}
+                      quality={100}
+                      src={original}
+                    />
                   </div>
                 ),
                 thumbnail: url,
               }))}
-              lazyLoad={true}
+              lazyLoad={false}
               showFullscreenButton={false}
               showPlayButton={false}
             />
@@ -77,7 +97,8 @@ export default function Works({ works }: WorksProps): JSX.Element {
           </div>
         </motion.li>
       )),
-    [columns, works],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [columns, isLoaded, works],
   );
 
   return (

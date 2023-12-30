@@ -210,7 +210,9 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
                 transition={true}
               >
                 <MenuItem
-                  className={styles.menuItem}
+                  className={`${styles.menuItem} ${
+                    pathname === "/fubumikuji/2023" ? styles.current : ""
+                  }`}
                   onClick={() => {
                     router.push("/fubumikuji/2023");
                   }}
@@ -218,7 +220,9 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
                   2023
                 </MenuItem>
                 <MenuItem
-                  className={styles.menuItem}
+                  className={`${styles.menuItem} ${
+                    pathname === "/fubumikuji/2022" ? styles.current : ""
+                  }`}
                   onClick={() => {
                     router.push("/fubumikuji/2022");
                   }}
@@ -226,7 +230,9 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
                   2022
                 </MenuItem>
                 <MenuItem
-                  className={styles.menuItem}
+                  className={`${styles.menuItem} ${
+                    pathname === "/fubumikuji/2021" ? styles.current : ""
+                  }`}
                   onClick={() => {
                     router.push("/fubumikuji/2021");
                   }}

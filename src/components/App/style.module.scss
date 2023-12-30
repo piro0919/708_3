@@ -9,8 +9,14 @@
   background: #49abb8;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 24px;
+  @include mq.mq($until: tablet) {
+    gap: 8px;
+    padding: 16px;
+  }
+  @include mq.mq($from: tablet) {
+    gap: 12px;
+    padding: 24px;
+  }
 }
 
 .upperBlock {
@@ -21,36 +27,49 @@
 .titleBlock {
   align-items: center;
   display: flex;
-  height: 90px;
   overflow: hidden;
+  @include mq.mq($until: tablet) {
+    height: 60px;
+  }
+  @include mq.mq($from: tablet) {
+    height: 90px;
+  }
 }
 
 .titleInner {
-  margin-top: -15px;
+  @include mq.mq($until: tablet) {
+    margin-top: -8px;
+  }
+  @include mq.mq($from: tablet) {
+    margin-top: -15px;
+  }
 }
 
 .title {
-  color: #fff;
+  color: #49abb8;
   font-weight: 900;
   @include mq.mq($until: tablet) {
-    font-size: 8.4rem;
+    font-size: 6.4rem;
+    -webkit-text-stroke: 2px #fff;
   }
   @include mq.mq($from: tablet) {
     font-size: 9.6rem;
+    -webkit-text-stroke: 4px #fff;
   }
 }
 
 .imageBlock {
-  border-radius: 12px;
-  height: 96px;
   overflow: hidden;
   position: relative;
-  width: 96px;
-  @media (width < 460px) {
-    display: none;
+  @include mq.mq($until: tablet) {
+    border-radius: 8px;
+    height: 64px;
+    width: 64px;
   }
-  @media (width >= 460px) {
-    display: block;
+  @include mq.mq($from: tablet) {
+    border-radius: 12px;
+    height: 96px;
+    width: 96px;
   }
 }
 
@@ -65,11 +84,12 @@
 }
 
 .subTitle {
-  color: #49abb8;
-  font-size: 2.4rem;
-  text-shadow:
-    1px 1px #fff,
-    -1px 1px #fff,
-    1px -1px #fff,
-    -1px -1px #fff;
+  color: #fff;
+  line-height: 1.25;
+  @include mq.mq($until: tablet) {
+    font-size: 1.6rem;
+  }
+  @include mq.mq($from: tablet) {
+    font-size: 2.4rem;
+  }
 }
