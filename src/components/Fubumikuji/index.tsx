@@ -95,9 +95,9 @@ export default function Fubumikuji({
                         <TwitterShareButton
                           className={styles.button}
                           hashtags={["絵フブキ", `フブみくじ${year}`]}
-                          title={fubumikuji[year].at(
+                          title={`${fubumikuji[year].at(
                             controller.frameIndex.current + 1,
-                          )}
+                          )}！`}
                           url={queryString.stringifyUrl({
                             query: {
                               result: fubumikuji[year].at(

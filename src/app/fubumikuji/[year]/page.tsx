@@ -40,7 +40,6 @@ export function generateMetadata({
         title: `${title}${year}`,
         twitter: {
           ...twitter,
-          card: "summary",
           title: `${title}${year}`,
         },
       }
