@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useMemo, useState } from "react";
+import { CgExternal } from "react-icons/cg";
 import ImageGallery from "react-image-gallery";
 import { useCounter } from "usehooks-ts";
 import Lightbox from "yet-another-react-lightbox";
@@ -16,6 +17,7 @@ type Work = {
   description: string;
   images: Image[];
   title: string;
+  url?: string;
 };
 
 export type WorksProps = {
@@ -34,7 +36,7 @@ export default function Works({ works }: WorksProps): JSX.Element {
   );
   const items = useMemo(
     () =>
-      works.map(({ description, images, title }, index) => (
+      works.map(({ description, images, title, url }, index) => (
         <motion.li
           animate={{
             clipPath: `inset(0% ${isLoaded ? 0 : 100}% ${
@@ -93,7 +95,13 @@ export default function Works({ works }: WorksProps): JSX.Element {
             />
             <hr className={styles.hr} />
             <div className={styles.textsBlock}>
-              <h3 className={styles.h3}>{title}</h3>
+              <div className={styles.titleBlock}>
+                <h3 className={styles.h3}>{title}</h3>
+                {typeof url === "string" ?
+                <a href={url} target="_blank">
+                  <CgExternal color="#49abb8" size={24} />
+                </a>:null}
+              </div>
               <p>{description}</p>
             </div>
           </div>

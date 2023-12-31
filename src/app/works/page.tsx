@@ -46,12 +46,13 @@ async function getWorkList(): Promise<GetWorkListData> {
 export default async function Page(): Promise<JSX.Element> {
   const { contents } = await getWorkList();
   const works: WorksProps["works"] = contents.map(
-    ({ description, images, title }) => ({
+    ({ description, images, title, url }) => ({
       description,
       images: images.map(({ image: { url } }) => ({
         url,
       })),
       title,
+      url,
     }),
   );
 

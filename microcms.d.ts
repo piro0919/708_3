@@ -14,6 +14,7 @@ declare namespace MicroCMS {
     title: string;
     description: string;
     images: WorkImage[];
+    url?: string;
   };
 
   type About = {
