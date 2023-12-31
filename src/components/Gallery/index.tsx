@@ -38,11 +38,12 @@ export default function Gallery({ images }: GalleryProps): JSX.Element {
             }}
           >
             <Image
-              alt=""
+              alt={`${url}?h=360&w=360&fit=min`}
               fill={true}
+              loading="eager"
               onLoad={increment}
               quality={100}
-              src={url}
+              src={`${url}?h=360&w=360&fit=min`}
             />
           </motion.div>
         </li>

@@ -22,5 +22,6 @@ declare namespace MicroCMS {
 
   type Illustrations = {
     image: Image;
+    tweetDate: string;
   };
 }

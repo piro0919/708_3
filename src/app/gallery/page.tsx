@@ -36,7 +36,9 @@ async function getGalleryList(): Promise<GetGalleryListData> {
     },
     endpoint: "illustrations",
     queries: {
+      fields: "image",
       limit: 100,
+      orders: "-tweetDate",
     },
   });
 

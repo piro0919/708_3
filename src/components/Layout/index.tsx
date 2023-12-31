@@ -61,7 +61,7 @@ function TilesBlock({
             }}
           >
             <Image
-              alt=""
+              alt={`/top${index}.jpg`}
               fill={true}
               onLoad={increment}
               quality={100}

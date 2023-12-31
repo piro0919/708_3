@@ -64,22 +64,24 @@ export default function Works({ works }: WorksProps): JSX.Element {
                     }}
                   >
                     <Image
-                      alt=""
+                      alt={`${original}?h=405&w=720&fit=min`}
                       fill={true}
+                      loading="eager"
                       onLoad={increment}
                       quality={100}
-                      src={original}
+                      src={`${original}?h=405&w=720&fit=min`}
                     />
                   </div>
                 ),
                 renderThumbInner: ({ original }) => (
                   <div className={styles.imageBlock}>
                     <Image
-                      alt=""
+                      alt={`${original}?h=60&w=100&fit=min`}
                       fill={true}
+                      loading="eager"
                       onLoad={increment}
                       quality={100}
-                      src={original}
+                      src={`${original}?h=60&w=100&fit=min`}
                     />
                   </div>
                 ),

@@ -63,7 +63,7 @@ export default function App(): JSX.Element {
               }}
             >
               <Image
-                alt=""
+                alt={`/top${index}.jpg`}
                 fill={true}
                 quality={100}
                 src={`/top${index}.jpg`}
