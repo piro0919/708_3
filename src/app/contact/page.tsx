@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import Client from "./client";
-import openGraph from "@/lib/openGraph";
-import twitter from "@/lib/twitter";
+import defaultMetadata from "@/lib/defaultMetadata";
 
 const title = "CONTACT";
 const url = "/contact";
@@ -11,14 +10,14 @@ export const metadata: Metadata = {
     canonical: url,
   },
   openGraph: {
-    ...openGraph,
+    ...defaultMetadata.openGraph,
     title,
     type: "article",
     url,
   },
   title,
   twitter: {
-    ...twitter,
+    ...defaultMetadata.twitter,
     title,
   },
 };

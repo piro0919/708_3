@@ -11,36 +11,23 @@ import "yet-another-react-lightbox/styles.css";
 import "./globals.scss";
 import "./mq-settings.scss";
 import Layout from "@/components/Layout";
+import defaultMetadata from "@/lib/defaultMetadata";
 
 const notoSansJP = NotoSansJP({ subsets: ["latin"], weight: "900" });
-const siteName = "Lv40代 | イラストレーター 7:08 オフィシャルサイト";
-const description = "イラストレーター7:08のオフィシャルサイトです。";
 const url = "https://www.nbhyakuhati.com";
 
 export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  description,
+  description: defaultMetadata.description,
   metadataBase: new URL(url),
-  openGraph: {
-    description,
-    locale: "ja_JP",
-    siteName,
-    title: siteName,
-    type: "website",
-    url: "/",
-  },
+  openGraph: defaultMetadata.openGraph,
   title: {
-    default: siteName,
-    template: `%s | ${siteName}`,
+    default: defaultMetadata.siteName,
+    template: `%s | ${defaultMetadata.siteName}`,
   },
-  twitter: {
-    card: "summary_large_image",
-    creator: "@708_nhh",
-    description,
-    title: siteName,
-  },
+  twitter: defaultMetadata.twitter,
 };
 
 export default function RootLayout({
