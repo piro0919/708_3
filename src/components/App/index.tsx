@@ -3,10 +3,10 @@ import arrayShuffle from "array-shuffle";
 import { motion } from "framer-motion";
 import { M_PLUS_1 as MPlus1 } from "next/font/google";
 import Image from "next/image";
-import { useContext, useMemo } from "react";
+import { useMemo } from "react";
 import Spacer from "react-spacer";
 import styles from "./style.module.scss";
-import renderdContext from "@/contexts/renderdContext";
+import useRenderdStore from "@/hooks/useRenderdStore";
 
 const mPlus1 = MPlus1({ subsets: ["latin"], weight: "700" });
 
@@ -20,7 +20,7 @@ export default function App(): JSX.Element {
       )[0],
     [],
   );
-  const { renderd } = useContext(renderdContext);
+  const { renderd } = useRenderdStore();
 
   return (
     <div className={styles.wrapper}>

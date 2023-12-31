@@ -15,7 +15,7 @@ import useBreakpoint from "use-breakpoint";
 import { useBoolean, useCounter, useWindowSize } from "usehooks-ts";
 import styles from "./style.module.scss";
 import Drawer from "@/components/Drawer";
-import renderdContext from "@/contexts/renderdContext";
+import useRenderdStore from "@/hooks/useRenderdStore";
 import useWindowWidth from "@/hooks/useWindowWidth";
 import breakpoints from "@/lib/breakpoints";
 
@@ -114,6 +114,7 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
         )),
     [column, initial, offInitial, row, shuffled],
   );
+  const { onRenderd } = useRenderdStore();
 
   useEffect(() => {
     if (height === 0 || width === 0) {
@@ -146,10 +147,11 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
     }
 
     setTiles({ column, row: Math.ceil((height / width) * (column - 1)) + 1 });
-  }, [breakpoint, height, width]);
+    onRenderd();
+  }, [breakpoint, height, onRenderd, row, width]);
 
   return (
-    <renderdContext.Provider value={{ renderd: column > 0 && row > 0 }}>
+    <>
       <h1 className={styles.h1}>
         Lv40代 | イラストレーター 7:08 オフィシャルサイト
       </h1>
@@ -261,6 +263,6 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
         <Drawer onClose={offIsOpen} open={isOpen} />
       </div>
       <ToastContainer position="bottom-center" />
-    </renderdContext.Provider>
+    </>
   );
 }
