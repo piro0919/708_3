@@ -2,9 +2,9 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import Lightbox from "react-18-image-lightbox";
 import ImageGallery from "react-image-gallery";
 import { useCounter } from "usehooks-ts";
+import Lightbox from "yet-another-react-lightbox";
 import styles from "./style.module.scss";
 import useWindowWidth from "@/hooks/useWindowWidth";
 
@@ -107,35 +107,22 @@ export default function Works({ works }: WorksProps): JSX.Element {
     <>
       <h2 className={styles.h2}>WORKS</h2>
       <ul className={styles.list}>{items}</ul>
-      {typeof workIndex === "number" && typeof photoIndex === "number" ? (
-        <Lightbox
-          mainSrc={works[workIndex].images[photoIndex].url}
-          nextSrc={
-            works[workIndex].images[
-              (photoIndex + 1) % works[workIndex].images.length
-            ].url
-          }
-          onCloseRequest={() => {
-            setWorkIndex(undefined);
-            setPhotoIndex(undefined);
-          }}
-          onMoveNextRequest={() =>
-            setPhotoIndex((photoIndex + 1) % works[workIndex].images.length)
-          }
-          onMovePrevRequest={() =>
-            setPhotoIndex(
-              (photoIndex + works[workIndex].images.length - 1) %
-                works[workIndex].images.length,
-            )
-          }
-          prevSrc={
-            works[workIndex].images[
-              (photoIndex + works[workIndex].images.length - 1) %
-                works[workIndex].images.length
-            ].url
-          }
-        />
-      ) : null}
+      <Lightbox
+        close={() => {
+          setWorkIndex(undefined);
+          setPhotoIndex(undefined);
+        }}
+        controller={{
+          closeOnBackdropClick: true,
+        }}
+        index={photoIndex}
+        open={typeof workIndex === "number" && typeof photoIndex === "number"}
+        slides={
+          typeof workIndex === "number"
+            ? works[workIndex].images.map(({ url }) => ({ src: url }))
+            : undefined
+        }
+      />
     </>
   );
 }

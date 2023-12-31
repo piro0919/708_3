@@ -2,8 +2,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import Lightbox from "react-18-image-lightbox";
 import { useCounter } from "usehooks-ts";
+import Lightbox from "yet-another-react-lightbox";
 import styles from "./style.module.scss";
 import useWindowWidth from "@/hooks/useWindowWidth";
 
@@ -17,7 +17,7 @@ export type GalleryProps = {
 
 export default function Gallery({ images }: GalleryProps): JSX.Element {
   const { count, increment } = useCounter(0);
-  const [photoIndex, setPhotoIndex] = useState<number>();
+  const [index, setIndex] = useState<number>();
   const { width } = useWindowWidth();
   const columns = useMemo(() => Math.ceil(width / 360), [width]);
   const items = useMemo(
@@ -29,7 +29,7 @@ export default function Gallery({ images }: GalleryProps): JSX.Element {
             className={styles.imageBlock}
             initial={{ scale: 0 }}
             onClick={() => {
-              setPhotoIndex(index);
+              setIndex(index);
             }}
             transition={{
               delay: 0.1 * index,
@@ -62,22 +62,17 @@ export default function Gallery({ images }: GalleryProps): JSX.Element {
       >
         {items}
       </ul>
-      {typeof photoIndex === "number" ? (
-        <Lightbox
-          mainSrc={images[photoIndex].url}
-          nextSrc={images[(photoIndex + 1) % images.length].url}
-          onCloseRequest={() => {
-            setPhotoIndex(undefined);
-          }}
-          onMoveNextRequest={() =>
-            setPhotoIndex((photoIndex + 1) % images.length)
-          }
-          onMovePrevRequest={() =>
-            setPhotoIndex((photoIndex + images.length - 1) % images.length)
-          }
-          prevSrc={images[(photoIndex + images.length - 1) % images.length].url}
-        />
-      ) : null}
+      <Lightbox
+        close={() => {
+          setIndex(undefined);
+        }}
+        controller={{
+          closeOnBackdropClick: true,
+        }}
+        index={index}
+        open={typeof index === "number"}
+        slides={images.map(({ url }) => ({ src: url }))}
+      />
     </>
   );
 }
