@@ -167,11 +167,15 @@
 }
 
 .header {
+  position: sticky;
+  z-index: 1;
   @include mq.mq($until: desktop) {
     padding: 12px 0;
+    top: calc(12px + 2px);
   }
   @include mq.mq($from: desktop) {
     padding: 24px 0;
+    top: calc(24px + 2px);
   }
 }
 
