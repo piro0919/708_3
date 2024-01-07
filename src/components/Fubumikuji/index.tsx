@@ -10,7 +10,7 @@ import fubumikuji from "@/lib/fubumikuji";
 
 export type FubumikujiProps = {
   initialResult?: string;
-  year: 2021 | 2022 | 2023;
+  year: 2021 | 2022 | 2023 | 2024;
 };
 
 export default function Fubumikuji({
@@ -96,12 +96,16 @@ export default function Fubumikuji({
                           className={styles.button}
                           hashtags={["絵フブキ", `フブみくじ${year}`]}
                           title={`${fubumikuji[year].at(
-                            controller.frameIndex.current + 1,
+                            controller.frameIndex.current +
+                              1 -
+                              fubumikuji[year].length,
                           )}！`}
                           url={queryString.stringifyUrl({
                             query: {
                               result: fubumikuji[year].at(
-                                controller.frameIndex.current + 1,
+                                controller.frameIndex.current +
+                                  1 -
+                                  fubumikuji[year].length,
                               ),
                             },
                             url: `https://www.nbhyakuhati.com/fubumikuji/${year}`,

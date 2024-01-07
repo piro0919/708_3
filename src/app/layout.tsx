@@ -1,4 +1,6 @@
 // eslint-disable-next-line filenames/match-exported
+import "@szhsin/react-menu/dist/index.css";
+import "@szhsin/react-menu/dist/transitions/slide.css";
 import type { Metadata } from "next";
 import { Noto_Sans_JP as NotoSansJP } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";

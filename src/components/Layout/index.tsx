@@ -1,7 +1,5 @@
 "use client";
 import { Menu, MenuButton, MenuItem } from "@szhsin/react-menu";
-import "@szhsin/react-menu/dist/index.css";
-import "@szhsin/react-menu/dist/transitions/slide.css";
 import arrayShuffle from "array-shuffle";
 import { motion } from "framer-motion";
 import { Righteous } from "next/font/google";
@@ -211,6 +209,16 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
                 menuButton={<MenuButton>⛩️</MenuButton>}
                 transition={true}
               >
+                <MenuItem
+                  className={`${styles.menuItem} ${
+                    pathname === "/fubumikuji/2024" ? styles.current : ""
+                  }`}
+                  onClick={() => {
+                    router.push("/fubumikuji/2024");
+                  }}
+                >
+                  2024
+                </MenuItem>
                 <MenuItem
                   className={`${styles.menuItem} ${
                     pathname === "/fubumikuji/2023" ? styles.current : ""
