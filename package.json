@@ -16,7 +16,7 @@
     "nextjs-toploader": "1.6.4",
     "nodemailer": "6.9.7",
     "pattern.css": "1.0.0",
-    "query-string": "8.1.0",
+    "query-string": "9.0.0",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "7.49.2",
