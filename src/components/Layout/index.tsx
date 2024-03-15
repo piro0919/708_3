@@ -10,7 +10,7 @@ import { ReactNode, useEffect, useMemo, useState } from "react";
 import { CgMenuRightAlt } from "react-icons/cg";
 import { ToastContainer } from "react-toastify";
 import useBreakpoint from "use-breakpoint";
-import { useBoolean, useCounter, useWindowSize } from "usehooks-ts";
+import { useBoolean, useCounter, useEventListener } from "usehooks-ts";
 import styles from "./style.module.scss";
 import Drawer from "@/components/Drawer";
 import useRenderdStore from "@/hooks/useRenderdStore";
@@ -78,7 +78,6 @@ export type LayoutProps = {
 export default function Layout({ children }: LayoutProps): JSX.Element {
   const { breakpoint } = useBreakpoint(breakpoints);
   const { width } = useWindowWidth();
-  const { height } = useWindowSize();
   const [{ column, row }, setTiles] = useState({ column: 0, row: 0 });
   const shuffled = useMemo<TilesBlockProps["shuffled"]>(
     () =>
@@ -113,6 +112,19 @@ export default function Layout({ children }: LayoutProps): JSX.Element {
     [column, initial, offInitial, row, shuffled],
   );
   const { onRenderd } = useRenderdStore();
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    const height = document.documentElement.clientHeight;
+
+    setHeight(height);
+  }, []);
+
+  useEventListener("resize", () => {
+    const height = document.documentElement.clientHeight;
+
+    setHeight(height);
+  });
 
   useEffect(() => {
     if (height === 0 || width === 0) {
