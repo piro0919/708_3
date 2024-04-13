@@ -97,10 +97,11 @@ export default function Works({ works }: WorksProps): JSX.Element {
             <div className={styles.textsBlock}>
               <div className={styles.titleBlock}>
                 <h3 className={styles.h3}>{title}</h3>
-                {typeof url === "string" ?
-                <a href={url} target="_blank">
-                  <CgExternal color="#49abb8" size={24} />
-                </a>:null}
+                {typeof url === "string" ? (
+                  <a href={url} target="_blank">
+                    <CgExternal color="#49abb8" size={24} />
+                  </a>
+                ) : null}
               </div>
               <p>{description}</p>
             </div>
@@ -130,6 +131,12 @@ export default function Works({ works }: WorksProps): JSX.Element {
             ? works[workIndex].images.map(({ url }) => ({ src: url }))
             : undefined
         }
+        styles={{
+          container: {
+            backdropFilter: "blur(2px)",
+            background: "rgba(255, 255, 255, 0.5)",
+          },
+        }}
       />
     </>
   );

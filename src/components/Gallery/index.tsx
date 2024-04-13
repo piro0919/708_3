@@ -72,6 +72,12 @@ export default function Gallery({ images }: GalleryProps): JSX.Element {
         index={index}
         open={typeof index === "number"}
         slides={images.map(({ url }) => ({ src: url }))}
+        styles={{
+          container: {
+            backdropFilter: "blur(2px)",
+            background: "rgba(255, 255, 255, 0.5)",
+          },
+        }}
       />
     </>
   );
