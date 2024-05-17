@@ -1,14 +1,14 @@
 {
   "dependencies": {
     "@hookform/error-message": "2.0.1",
-    "@hookform/resolvers": "3.3.4",
+    "@hookform/resolvers": "3.4.0",
     "@mpth/react-no-ssr": "1.0.1",
     "@react-hook/previous": "1.0.1",
     "@szhsin/react-menu": "4.1.0",
     "array-shuffle": "3.0.0",
     "axios": "1.6.8",
     "dayjs": "1.11.11",
-    "framer-motion": "11.1.9",
+    "framer-motion": "11.2.4",
     "gif-tsx": "0.1.5",
     "i18next": "23.11.4",
     "microcms-js-sdk": "3.1.1",
