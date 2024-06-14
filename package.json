@@ -12,7 +12,7 @@
     "gif-tsx": "0.1.5",
     "i18next": "23.11.5",
     "microcms-js-sdk": "3.1.1",
-    "next": "14.2.3",
+    "next": "14.2.4",
     "nextjs-toploader": "1.6.12",
     "nodemailer": "6.9.13",
     "pattern.css": "1.0.0",
@@ -33,7 +33,7 @@
     "ress": "5.0.2",
     "use-breakpoint": "4.0.1",
     "usehooks-ts": "3.1.0",
-    "yet-another-react-lightbox": "3.19.0",
+    "yet-another-react-lightbox": "3.20.0",
     "zod": "3.23.8",
     "zod-i18n-map": "2.27.0",
     "zustand": "4.5.2"
