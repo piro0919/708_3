@@ -13,7 +13,7 @@
     "i18next": "23.14.0",
     "microcms-js-sdk": "3.1.2",
     "next": "14.2.7",
-    "nextjs-toploader": "1.6.12",
+    "nextjs-toploader": "3.6.15",
     "nodemailer": "6.9.14",
     "pattern.css": "1.0.0",
     "query-string": "9.1.0",
