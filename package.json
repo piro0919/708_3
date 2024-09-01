@@ -6,7 +6,7 @@
     "@react-hook/previous": "1.0.1",
     "@szhsin/react-menu": "4.2.2",
     "array-shuffle": "3.0.0",
-    "axios": "1.7.6",
+    "axios": "1.7.7",
     "dayjs": "1.11.13",
     "framer-motion": "11.3.31",
     "gif-tsx": "0.1.5",
