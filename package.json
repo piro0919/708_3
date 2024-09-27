@@ -8,7 +8,7 @@
     "array-shuffle": "3.0.0",
     "axios": "1.7.7",
     "dayjs": "1.11.13",
-    "framer-motion": "11.5.6",
+    "framer-motion": "11.9.0",
     "gif-tsx": "0.1.5",
     "i18next": "23.15.1",
     "microcms-js-sdk": "3.1.2",
